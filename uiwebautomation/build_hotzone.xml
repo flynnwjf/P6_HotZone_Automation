@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<project name="HotZone Automation Test" default="runTest" basedir=".">
+	<property name="src" location="src" />
+	<property name="lib" location="lib" />
+	<property name="build" location="build" />
+	
+	<tstamp>
+		<format property="NOW" pattern="yyyyMMdd-HH-mm" />
+	</tstamp>
+
+	<!-- task definition -->
+	<taskdef name="testng" classname="org.testng.TestNGAntTask"
+		classpath="lib/testng-6.8.jar" />
+
+	<path id="buildJar">
+		<fileset dir="${lib}">
+		<include name="*.jar" />
+		</fileset>
+		<pathelement location="${build}/${NOW}" />
+		<pathelement location="${src}" />
+	</path>
+
+	<target name="cleanBuildPath">
+		<echo message="Delete existing build files......" />
+		<delete dir="${build}/${NOW}" />
+	</target>
+
+	<!-- initial -->
+	<target name="init">
+		<echo message="init......" />
+		<mkdir dir="${build}/${NOW}" />
+	</target>
+
+	<!-- COMPILE PROJECT -->
+	<target name="compile">
+		<echo message="compiling project......" />
+		<javac debug="true" classpathref="buildJar" source="1.7" srcdir="${src}"
+			destdir="${build}/${NOW}" />
+	</target>
+
+	<target name="runScript" description="Run the script">
+		<testng classpathref="buildJar" outputDir="${build}/${NOW}"
+			haltonfailure="true" useDefaultListeners="false"
+			listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
+			<xmlfileset dir="${src}/testng" includes="testng_hotzone_webportal.xml" />
+			<sysproperty key="org.uncommons.reportng.title" value="HotZone - Report" />
+		</testng>
+	</target>
+
+	<!-- run test -->
+	<target name="runTest" description="Automation process">
+		<antcall target="cleanBuildPath" />
+		<antcall target="init" />
+		<antcall target="compile" />
+		<antcall target="runScript" />
+		<!-- <antcall target="outputformat" /> -->
+		<echo message="HotZone Automation Done" />
+	</target>
+</project>

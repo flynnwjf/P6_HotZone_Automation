@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="HotZone_APP_Automation_Test" verbose="1" parallel="tests" thread-count="1">  
+    
+    <!-- ########################## Android ########################## -->
+    
+    <test name="Android_TC_APP_ValidAndInvalidLogin" preserve-order="true">
+    <parameter name ="browserType" value=""/>
+    <parameter name ="env" value="Android_APP"/>
+      <classes>
+ 	 	<class name="HotZone.autotest.testCases.TC_APP_ValidAndInvalidLogin">
+ 	 	      <methods>
+                    <include name="testInvalidLoginWithWrongEmail" />
+                    <include name="testValidLogin" />
+              </methods>
+ 	 	</class>
+ 	  </classes>
+    </test>
+    
+    <!-- ########################## iOS ########################## -->
+    
+    <test name="iOS_TC_APP_ValidAndInvalidLogin" preserve-order="true">
+    <parameter name ="browserType" value=""/>
+    <parameter name ="env" value="iOS_APP"/>
+      <classes>
+ 	 	<class name="HotZone.autotest.testCases.TC_APP_ValidAndInvalidLogin">
+ 	 	      <methods>
+                    <include name="testInvalidLoginWithWrongEmail" />
+                    <include name="testValidLogin" />
+              </methods>
+ 	 	</class>
+ 	  </classes>
+    </test>
+    
+</suite>

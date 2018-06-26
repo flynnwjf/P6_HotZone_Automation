@@ -1,0 +1,62 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="HotZone_WebPortal_Automation_Test" verbose="1" parallel="tests" thread-count="3">
+
+    <!-- ########################## Firefox ########################## -->
+    
+    <test name="Firefox_TC_LoginPage_LoginWithDifferentRoles" preserve-order="true">
+    <parameter name ="browserType" value="firefox"/>
+      <classes>
+ 	 	<class name="HotZone.autotest.testCases.TC_LoginPage_LoginWithDifferentRoles">
+ 	 	      <methods>
+                    <include name="testLogin_Admin" />
+                    <include name="testLogin_Manager" />
+              </methods>
+ 	 	</class>
+ 	  </classes>
+    </test>
+    
+    
+    <!-- ########################## Chrome ########################## -->
+    
+    <test name="Chrome_TC_LoginPage_LoginWithDifferentRoles" preserve-order="true">
+    <parameter name ="browserType" value="chrome"/>
+      <classes>
+ 	 	<class name="HotZone.autotest.testCases.TC_LoginPage_LoginWithDifferentRoles">
+ 	 	      <methods>
+                    <include name="testLogin_Admin" />
+                    <include name="testLogin_Manager" />
+              </methods>
+ 	 	</class>
+ 	  </classes>
+    </test>
+    
+    <!-- ########################## IE ########################## -->
+    
+    <test name="IE_TC_LoginPage_LoginWithDifferentRoles" preserve-order="true">
+    <parameter name ="browserType" value="ie"/>
+      <classes>
+ 	 	<class name="HotZone.autotest.testCases.TC_LoginPage_LoginWithDifferentRoles">
+ 	 	      <methods>
+                    <include name="testLogin_Admin" />
+                    <include name="testLogin_Manager" />
+              </methods>
+ 	 	</class>
+ 	  </classes>
+    </test>
+
+    <!-- ########################## Safari ########################## -->
+    
+    <test name="Safari_TC_LoginPage_LoginWithDifferentRoles" preserve-order="true">
+    <parameter name ="browserType" value="safari"/>
+      <classes>
+ 	 	<class name="HotZone.autotest.testCases.TC_LoginPage_LoginWithDifferentRoles">
+ 	 	      <methods>
+                    <include name="testLogin_Admin" />
+                    <include name="testLogin_Manager" />
+              </methods>
+ 	 	</class>
+ 	  </classes>
+    </test>
+    
+</suite>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <env>android_app</env>
+    
+    <url>https://gepoplague.clinical6.com/webapp/sitejourney/#/login</url>
+    
+	<desktop>
+		<browserName>ie</browserName>
+	</desktop>
+	
+	<android_web>
+	    <deviceName>Nexus</deviceName>
+		<platformName>Android</platformName>
+		<platformVersion>5.1.1</platformVersion>
+		<browserName>chrome</browserName>
+	</android_web>
+	
+	<ios_web>
+	    <deviceName>iPhone 5s</deviceName>
+		<platformName>IOS</platformName>
+		<platformVersion>10.3</platformVersion>
+		<browserName>safari</browserName>
+	</ios_web>
+	
+	<android_app>
+		<deviceID>01e9b658204fd4ba</deviceID>
+	    <deviceName>Nexus</deviceName>
+		<platformName>Android</platformName>
+		<platformVersion>5.1.1</platformVersion>
+		<filePath>/src/Main/app/hotzone.apk</filePath>
+	</android_app>
+	
+</config>
+
