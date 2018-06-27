@@ -7,7 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -68,13 +71,16 @@ public class WebDriverCreator{
 		capability = DesiredCapabilities.chrome();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("test-type");
-		return new ChromeDriver(capability);
+		options.merge(capability);
+		return new ChromeDriver(options);
 	}
 	
 	private static WebDriver getFirefoxDriver() throws MalformedURLException {
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/Main/drivers/geckodriver.exe");
-		return new FirefoxDriver(capability);
+		FirefoxOptions options = new FirefoxOptions().setProfile(new FirefoxProfile());
+		options.merge(capability);
+		return new FirefoxDriver(options);
 	}
 	
 	private static WebDriver getIEDriver() throws MalformedURLException {
@@ -84,14 +90,17 @@ public class WebDriverCreator{
         capability.setCapability(CapabilityType.BROWSER_NAME, "internet explorer");
         capability.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
         capability.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
-        return new InternetExplorerDriver(capability);
+        InternetExplorerOptions options = new InternetExplorerOptions();
+        options.merge(capability);
+        return new InternetExplorerDriver(options);
 	}
 	
 	public static WebDriver getSafariDriver() {
 		DesiredCapabilities safariCapabilities = DesiredCapabilities.safari();
 		SafariOptions options = new SafariOptions();
 		safariCapabilities.setCapability(SafariOptions.CAPABILITY, options);
-		return new SafariDriver(safariCapabilities);
+		options.merge(safariCapabilities);
+		return new SafariDriver(options);
 	}
 
 	private static WebDriver getAndroidWapDriver(String env) throws MalformedURLException {
