@@ -52,7 +52,7 @@ public class BaseTestCase {
 		else {
 			driver = WebDriverCreator.getWebDriver(envStr);		
 		}
-		Thread.sleep(5000);
+		Thread.sleep(20*1000);
 	}
 
 	/*Remote*/

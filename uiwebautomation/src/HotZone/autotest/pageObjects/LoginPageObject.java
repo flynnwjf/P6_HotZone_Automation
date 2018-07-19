@@ -21,6 +21,10 @@ public class LoginPageObject extends BasePageObject {
 		clearAndTypeString(findElement(mapping.getProperty("emailfield")),usrStr);
 	}
 	
+	public void input_email_invalid(String usrStr, String val){
+		clearAndTypeString(findElement(mapping.getProperty("emailfield").replace("Email Address", val)),usrStr);
+	}
+	
 	public void input_pin(String pwdStr){
 		clearAndTypeString(findElement(mapping.getProperty("pinfield")),pwdStr);
 	}
@@ -45,13 +49,25 @@ public class LoginPageObject extends BasePageObject {
     	return findElement(mapping.getProperty("pintext")).getText().contains("Enter Your 6 Digit PIN");
     }
 	
-	public Boolean verify_pop_title(){	
+	public Boolean verify_pop_title_invalid_email(){	
     	return findElement(mapping.getProperty("pop_title")).getText().contains("Invalid Email");
     }
 	
-	public Boolean verify_pop_text(){	
+	public Boolean verify_pop_title_invalid_pin(){	
+    	return findElement(mapping.getProperty("pop_title")).getText().contains("Alert");
+    }
+	
+	public Boolean verify_pop_text_invalid_email(){	
     	return findElement(mapping.getProperty("pop_text")).getText().contains("We don¡¯t recognize this email address. Please enter your previously registered email address.");
     }
+	
+	public Boolean verify_pop_text_invalid_pin(){	
+    	return findElement(mapping.getProperty("pop_text")).getText().contains("Please review your credentials. [Email/Account Name and password, or Device Access Token]");
+    }
+	
+	public Boolean verify_login_dashboard(){
+		return findElement(mapping.getProperty("dash_patient")).isDisplayed();
+	}
 	
 	/*------------------------------------------------------------------------------------------------------------------------------*/
 	
