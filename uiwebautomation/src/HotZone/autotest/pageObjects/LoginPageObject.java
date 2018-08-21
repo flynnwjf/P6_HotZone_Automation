@@ -66,7 +66,7 @@ public class LoginPageObject extends BasePageObject {
     }
 	
 	public Boolean verify_login_dashboard(){
-		return findElement(mapping.getProperty("dash_patient")).isDisplayed();
+		return findElement(mapping.getProperty("dash_search_bar")).isDisplayed();
 	}
 	
 	/*------------------------------------------------------------------------------------------------------------------------------*/

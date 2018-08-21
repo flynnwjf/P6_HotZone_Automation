@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Main.base;
 
 import java.util.List;
@@ -15,15 +12,21 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import Main.utilities.Helper;
 import Main.utilities.Utils;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 
 
 public class BasePageObject {
 
 	protected Logger logger = Logger.getLogger(this.getClass());
 	protected WebDriver driver;
-
+	
+	/*Android - Navigate Back*/
+	public void navigationBack_Android() {
+		AndroidDriver<WebElement> driver = (AndroidDriver<WebElement>) this.driver;
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+	}
 	
 	/*Find Element*/	
 	public WebElement findElement(String locator){
@@ -71,6 +74,16 @@ public class BasePageObject {
 		}
 	}
 	
+	public WebElement findElementByIndex(String name, int index){
+		logger.info("find elements by class name: " + name);
+		try{
+			return driver.findElements(By.className(name)).get(index);
+		}catch(Exception e){
+			logger.info("Find elements exception: " + e.getMessage());
+			return null;
+		}
+	}
+	
 	/*Release Element*/	
 	public void releaseElement(WebElement ele){
 		Actions ac = new Actions(driver);
@@ -86,10 +99,16 @@ public class BasePageObject {
              logger.info("Verify if current element " + ele.getTagName() + " is displayed on page: " + isdisplay);
            } 
         catch (Exception e) {
-             logger.info("Sorry, this element is not displayed on page, throw: "+e.getMessage());
+             logger.info("Sorry, this element is not displayed on page, throw: " + e.getMessage());
            }
         return isdisplay;
     }
+	
+	public void getFocus(WebElement ele) {
+		Actions ac = new Actions(driver);
+		ac.contextClick(ele).perform();
+		ele.sendKeys(Keys.ESCAPE);
+	}
 	
 	public void clearAndTypeString(WebElement ele, String text) {
         logger.info("Typing " + text + " into element " + ele.getTagName());
@@ -104,7 +123,7 @@ public class BasePageObject {
 	 
 	public void clickElementWithFocus(WebElement ele) {
 	    logger.info("Click element " + ele.getText() + " with focus");
-	    Helper.getFocus(driver,ele);
+	    getFocus(ele);
 	    ele.click();
 	}
 	 
@@ -177,10 +196,14 @@ public class BasePageObject {
      }
      
      public void refreshPage(){
-         logger.info("Refresh the pag");
+         logger.info("Refresh the page");
          Actions actions = new Actions(driver);
          actions.sendKeys(Keys.F5).perform();
      }
+     
+ 	public void refresh() {
+		driver.navigate().refresh();
+	}
      
      public void scrollToView(WebElement e){
     	 logger.info("Scroll the view to the defined position");
