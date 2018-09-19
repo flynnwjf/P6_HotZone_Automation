@@ -26,15 +26,18 @@ public class HomePageObject extends BasePageObject {
 	}
 	
 	public String get_user_name(){
-		return findElementByIndex(mapping.getProperty("text_view"), 5).getText();
+		int count = countOfElementsByClassName(mapping.getProperty("text_view"));
+		return findElementByIndex(mapping.getProperty("text_view"), (count-3)).getText();
 	}
 	
 	public void click_menu_my_profile(){
-		clickElement(findElementByIndex(mapping.getProperty("linear"), 4));
+		int count = countOfElementsByClassName(mapping.getProperty("linear"));
+		clickElement(findElementByIndex(mapping.getProperty("linear"), (count-2)));
 	}
 	
 	public void click_menu_resources(){
-		clickElement(findElementByIndex(mapping.getProperty("linear"), 5));
+		int count = countOfElementsByClassName(mapping.getProperty("linear"));
+		clickElement(findElementByIndex(mapping.getProperty("linear"), (count-1)));
 	}
 	
 	public void click_contact(){

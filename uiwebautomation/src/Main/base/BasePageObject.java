@@ -84,6 +84,10 @@ public class BasePageObject {
 		}
 	}
 	
+	public int countOfElementsByClassName(String name){
+		return driver.findElements(By.className(name)).size();
+	}
+	
 	/*Release Element*/	
 	public void releaseElement(WebElement ele){
 		Actions ac = new Actions(driver);
