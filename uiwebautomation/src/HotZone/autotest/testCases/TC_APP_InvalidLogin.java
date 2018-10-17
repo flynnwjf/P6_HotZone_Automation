@@ -15,13 +15,13 @@ public class TC_APP_InvalidLogin extends BaseTestCase{
 	 @Test (priority = 1)
 	 public void testInvalidLoginWithWrongEmail() {	 	 
 		  LoginPageObject login = new LoginPageObject(driver);
-		  login.verify_email_page_header();
-		  login.input_email(dataMap.getProperty("invalid_email"));
-		  login.click_btn_next();
+		  login.verifyEmailPageHeader();
+		  login.inputEmail(dataMap.getProperty("invalid_email"));
+		  login.clickNextBtn();
 		  Utils.sleep(5000);
-		  Assert.assertTrue(login.verify_pop_title_invalid_email());
-		  Assert.assertTrue(login.verify_pop_text_invalid_email());
-		  login.click_pop_ok();
+		  Assert.assertTrue(login.verifyPopTitleInvalidEmail());
+		  Assert.assertTrue(login.verifyPopTextInvalidEmail());
+		  login.clickPopOK();
 	 }
 	 
 	/*
@@ -31,16 +31,16 @@ public class TC_APP_InvalidLogin extends BaseTestCase{
 	 @Test (priority = 2)
 	 public void testInvalidLoginWithWrongPIN() {	 	 
 		  LoginPageObject login = new LoginPageObject(driver);
-		  login.verify_email_page_header();
-		  login.input_email_invalid(dataMap.getProperty("valid_email"), dataMap.getProperty("invalid_email"));
-		  login.click_btn_next();
+		  login.verifyEmailPageHeader();
+		  login.inputInvalidEmail(dataMap.getProperty("valid_email"), dataMap.getProperty("invalid_email"));
+		  login.clickNextBtn();
 		  Utils.sleep(5000);
-		  login.verify_pin_page_header();
-		  login.input_pin(dataMap.getProperty("invalid_pin"));
+		  login.verifyPINPageHeader();
+		  login.inputPIN(dataMap.getProperty("invalid_pin"));
 		  Utils.sleep(5000);
-		  Assert.assertTrue(login.verify_pop_title_invalid_pin());
-		  Assert.assertTrue(login.verify_pop_text_invalid_pin());
-		  login.click_pop_ok();
+		  Assert.assertTrue(login.verifyPopTitleInvalidPIN());
+		  Assert.assertTrue(login.verifyPopTextInvalidPIN());
+		  login.clickPopOK();
 	 }
    	 
 }

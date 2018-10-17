@@ -17,46 +17,46 @@ public class HomePageObject extends BasePageObject {
 	
 	/*------------------------------------------------------------------------------------------------------------------------------*/
 	
-	public void return_dashboard(){
+	public void returnDashboard(){
 		navigationBack_Android();
 	}
 	
-	public void click_menu_bar(){
+	public void clickMenuBar(){
 		clickElement(findElementByIndex(mapping.getProperty("view"), 7));
 	}
 	
-	public String get_user_name(){
+	public String getUserName(){
 		int count = countOfElementsByClassName(mapping.getProperty("text_view"));
 		return findElementByIndex(mapping.getProperty("text_view"), (count-3)).getText();
 	}
 	
-	public void click_menu_my_profile(){
+	public void clickMenuMyProfile(){
 		int count = countOfElementsByClassName(mapping.getProperty("linear"));
 		clickElement(findElementByIndex(mapping.getProperty("linear"), (count-2)));
 	}
 	
-	public void click_menu_resources(){
+	public void clickMenuResources(){
 		int count = countOfElementsByClassName(mapping.getProperty("linear"));
 		clickElement(findElementByIndex(mapping.getProperty("linear"), (count-1)));
 	}
 	
-	public void click_contact(){
+	public void clickContact(){
 		clickElement(findElementByIndex(mapping.getProperty("view"), 9));
 	}
 	
-	public void click_add_patient(){
+	public void clickAddPatient(){
 		clickElement(findElementByIndex(mapping.getProperty("view"), 21));
 	}
 	
-	public void input_search_text(String text){
+	public void inputSearchText(String text){
 		clearAndTypeString(findElement(mapping.getProperty("search_text")), text);
 	}
 	
-	public void click_search_icon(){
+	public void clickSearchIcon(){
 		clickElement(findElement(mapping.getProperty("search_icon")));
 	}
 	
-	public Boolean verify_pop_text_invalid_pin(){	
+	public Boolean verifyPopTextInvalidPIN(){	
     	return findElement(mapping.getProperty("pop_text")).getText().contains("Please review your credentials. [Email/Account Name and password, or Device Access Token]");
     }
 	

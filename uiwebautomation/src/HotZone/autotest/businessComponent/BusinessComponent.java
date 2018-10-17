@@ -11,10 +11,10 @@ public class BusinessComponent {
 	
 	public static void Login(WebDriver driver, String email, String pin){	
 		  LoginPageObject login = new LoginPageObject(driver);
-		  login.input_email(email);
-		  login.click_btn_next();
+		  login.inputEmail(email);
+		  login.clickNextBtn();
 		  Utils.sleep(5000);
-		  login.input_pin(pin);
+		  login.inputPIN(pin);
 		  Utils.sleep(15000);
 	}	
 	

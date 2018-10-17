@@ -16,14 +16,14 @@ public class TC_APP_ValidLogin extends BaseTestCase{
 	 @Test (priority = 1)
 	 public void testValidLogin() {	 	 
 		  LoginPageObject login = new LoginPageObject(driver);
-		  login.verify_email_page_header();
-		  login.input_email(dataMap.getProperty("valid_email"));
-		  login.click_btn_next();
+		  login.verifyEmailPageHeader();
+		  login.inputEmail(dataMap.getProperty("valid_email"));
+		  login.clickNextBtn();
 		  Utils.sleep(5000);
-		  login.verify_pin_page_header();
-		  login.input_pin(dataMap.getProperty("valid_pin"));
+		  login.verifyPINPageHeader();
+		  login.inputPIN(dataMap.getProperty("valid_pin"));
 		  Utils.sleep(15000);
-		  Assert.assertTrue(login.verify_login_dashboard());
+		  Assert.assertTrue(login.verifyLoginDashboard());
 	 }
    	 
 }

@@ -28,6 +28,12 @@ public class BasePageObject {
 		driver.pressKeyCode(AndroidKeyCode.BACK);
 	}
 	
+	/*Android - Hide Keyboard*/
+	public void hideKeyboard() {
+		AndroidDriver<WebElement> driver = (AndroidDriver<WebElement>) this.driver;
+		driver.hideKeyboard();
+	}
+	
 	/*Find Element*/	
 	public WebElement findElement(String locator){
 		String by = locator.split("->")[0];
