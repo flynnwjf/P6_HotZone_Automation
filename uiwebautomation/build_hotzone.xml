@@ -34,7 +34,7 @@
 	<!-- COMPILE PROJECT -->
 	<target name="compile">
 		<echo message="compiling project......" />
-		<javac debug="true" classpathref="buildJar" source="1.7" srcdir="${src}"
+		<javac debug="true" classpathref="buildJar" source="1.8" srcdir="${src}"
 			destdir="${build}/${NOW}" />
 	</target>
 
@@ -42,8 +42,8 @@
 		<testng classpathref="buildJar" outputDir="${build}/${NOW}"
 			haltonfailure="true" useDefaultListeners="false"
 			listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
-			<xmlfileset dir="${src}/testng" includes="testng_hotzone_webportal.xml" />
-			<sysproperty key="org.uncommons.reportng.title" value="HotZone - Report" />
+			<xmlfileset dir="${src}/testng" includes="testng_hotzone_app.xml" />
+			<sysproperty key="org.uncommons.reportng.title" value="HotZone APP - Report" />
 		</testng>
 	</target>
 
@@ -54,6 +54,6 @@
 		<antcall target="compile" />
 		<antcall target="runScript" />
 		<!-- <antcall target="outputformat" /> -->
-		<echo message="HotZone Automation Done" />
+		<echo message="HotZone APP Automation Done" />
 	</target>
 </project>

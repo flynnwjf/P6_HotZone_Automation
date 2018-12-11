@@ -51,7 +51,7 @@ public class BasePageObject {
 	}
 	
 	public WebElement findElementById(String id){
-		logger.info("find element by id: " + id);
+		logger.info("Find element by id: " + id);
 		try{
 			return driver.findElement(By.id(id));
 		}catch(Exception e){
@@ -61,7 +61,7 @@ public class BasePageObject {
 	}
 	
 	public WebElement findElementByXpath(String xpath){
-		logger.info("find element by xpath: " + xpath);
+		logger.info("Find element by xpath: " + xpath);
 		try{
 			return driver.findElement(By.xpath(xpath));
 		}catch(Exception e){
@@ -71,7 +71,7 @@ public class BasePageObject {
 	}
 	
 	public WebElement findElementByCss(String cssStr){
-		logger.info("find element by css: " + cssStr);
+		logger.info("Find element by css: " + cssStr);
 		try{
 		   return driver.findElement(By.cssSelector(cssStr));
 		}catch(Exception e){
@@ -81,7 +81,7 @@ public class BasePageObject {
 	}
 	
 	public WebElement findElementByIndex(String name, int index){
-		logger.info("find elements by class name: " + name);
+		logger.info("Find elements by class name: " + name);
 		try{
 			return driver.findElements(By.className(name)).get(index);
 		}catch(Exception e){
